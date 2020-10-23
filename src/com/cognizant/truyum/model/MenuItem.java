@@ -53,11 +53,6 @@ public class MenuItem
 	public void setFreeDelivery(boolean freeDelivery) {
 		this.freeDelivery = freeDelivery;
 	}
-	/*@Override
-	public String toString() {
-		return "MenuItem [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}*/
 	@Override
 	public String toString() {
 		return "MenuItem [getId()=" + getId() + ", getName()=" + getName() + ", getPrice()=" + getPrice()

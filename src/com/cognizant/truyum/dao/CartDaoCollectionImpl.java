@@ -1,5 +1,5 @@
 package com.cognizant.truyum.dao;
 
-public class CartDaoCollectionImpl {
+public class CartDaoCollectionImpl implements CartDao{
 
 }
