@@ -79,7 +79,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao
 		{
 			if(m.getId()==menuItemId)
 			{
-				
+				item=m;
 			}
 		}
 		return item;
