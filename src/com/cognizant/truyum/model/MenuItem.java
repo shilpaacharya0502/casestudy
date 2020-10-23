@@ -55,9 +55,9 @@ public class MenuItem
 	}
 	@Override
 	public String toString() {
-		return "MenuItem [getId()=" + getId() + ", getName()=" + getName() + ", getPrice()=" + getPrice()
-				+ ", isActive()=" + isActive() + ", getDateOfLaunch()=" + getDateOfLaunch() + ", getCategory()="
-				+ getCategory() + ", isFreeDelivery()=" + isFreeDelivery() + "]";
+		return "MenuItem details : Id=" + getId() + ", Name=" + getName() + ", Price=" + getPrice()
+				+ ", isActive=" + isActive() + ", DateOfLaunch=" + getDateOfLaunch() + ", Category="
+				+ getCategory() + ", isFreeDelivery=" + isFreeDelivery() + "\n";
 	}
 	public MenuItem(long id, String name, float price, boolean active, Date dateOfLaunch, String category,
 			boolean freeDelivery) {

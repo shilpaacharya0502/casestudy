@@ -9,7 +9,9 @@ public class MenuItemDaoCollectionImplTest
 {
 	public static void main(String[] args) 
 	{
+		System.out.println("Menu item list for Admin");
 		testGetMenuItemListAdmin();
+		System.out.println("Menu item list for Customer");
 		testGetMenuItemListCustomer();
 		testModifyMenuItem();
 		
@@ -41,7 +43,7 @@ public class MenuItemDaoCollectionImplTest
 			MenuItem mAdd=new MenuItem(102,"Noodles",49,true,DateUtil.convertToDate("23/10/2020"),"Main Course",false);
 			MenuItemDao menuItemDao= new MenuItemDaoCollectionImpl();
 			menuItemDao.modifyMenuItem(mAdd);
-			System.out.println("After Modification"+menuItemDao.getMenuItem(102));
+			System.out.println("After Modification "+menuItemDao.getMenuItem(102));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
