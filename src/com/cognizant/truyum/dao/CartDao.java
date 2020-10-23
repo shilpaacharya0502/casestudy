@@ -1,5 +1,11 @@
 package com.cognizant.truyum.dao;
 
-public interface CartDao {
+import java.util.List;
 
+import com.cognizant.truyum.model.MenuItem;
+
+public interface CartDao {
+	public void addCartItem(long userId,long menuItemId);
+	public List<MenuItem> getAllCartItems(long userId);
+	public void removeCartItem(long userId,long menuItemId); 
 }
