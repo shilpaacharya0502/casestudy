@@ -1,5 +1,7 @@
 package com.cognizant.truyum.dao;
 
+import com.cognizant.truyum.model.MenuItem;
+
 public class CartDaoCollectionImplTest 
 {
 	public static void main(String [] args)
@@ -13,7 +15,11 @@ public class CartDaoCollectionImplTest
 		CartDao cartDao= new CartDaoCollectionImpl();
 		cartDao.addCartItem(1,103);
 		try {
-			System.out.println(cartDao.getAllCartItems(1));
+			for(MenuItem m:cartDao.getAllCartItems(1))
+			{
+				System.out.println(m.toString());
+			}
+			
 		} catch (CartEmptyException e) 
 		{
 			System.out.println("Empty Cart");
@@ -24,7 +30,10 @@ public class CartDaoCollectionImplTest
 	{
 		CartDao cartDao= new CartDaoCollectionImpl();
 		try {
-			System.out.println(cartDao.getAllCartItems(1));
+			for(MenuItem m:cartDao.getAllCartItems(1))
+			{
+				System.out.println(m.toString());
+			}
 		} catch (CartEmptyException e) 
 		{
 			System.out.println("Empty Cart");

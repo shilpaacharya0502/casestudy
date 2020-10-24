@@ -23,8 +23,12 @@ public class CartDaoSqlImpl
 		ResultSet rs=ps.executeQuery();
 		while (rs.next()) 
 		{ 
-			
+			MenuItem m=new MenuItem(rs.getLong(1),rs.getString(2),rs.getFloat(3),rs.getBoolean(4),rs.getDate(5), sql, false);
+			cart.getMenuItemList().add(m);
 		}
+		String sql1="select sum(me_price) from menu_item INNER JOIN cart on cart.ct_menu_id=menu_item.me_id WHERE cart.user_id=?;";
+		PreparedStatement pstmt=con.prepareStatement(sql1);
+		pstmt.setLong(1, userId);
 		return null;
 		
 	}
