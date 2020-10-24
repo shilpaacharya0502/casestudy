@@ -1,5 +1,7 @@
 package com.cognizant.truyum.dao;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,7 +23,7 @@ public class CartDaoCollectionImpl implements CartDao
 		}
 	}
 	
-	public void addCartItem(long userId,long menuItemId)
+	public void addCartItem(long userId,long menuItemId) throws ClassNotFoundException, IOException, SQLException
 	{
 		List<MenuItem> menuItemList;
 		MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();

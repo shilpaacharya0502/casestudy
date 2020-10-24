@@ -4,7 +4,10 @@ public class MenuItemDaoSqlImplTest
 {
 	public static void main(String [] args)
 	{
-		
+		testGetMenuItemListAdmin();
+		testGetMenuItemListCustomer();
+		testModifyMenuItem();
+		testGetMenuItem();
 	}
 	public static void testGetMenuItemListAdmin()
 	{

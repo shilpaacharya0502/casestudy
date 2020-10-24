@@ -1,5 +1,4 @@
 package com.cognizant.truyum.dao;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +10,7 @@ import java.util.List;
 import com.cognizant.truyum.model.Cart;
 import com.cognizant.truyum.model.MenuItem;
 
-public class CartDaoSqlImpl 
+public class CartDaoSqlImpl implements CartDao
 {
 	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException, ClassNotFoundException, IOException, SQLException
 	{
@@ -29,8 +28,10 @@ public class CartDaoSqlImpl
 		String sql1="select sum(me_price) from menu_item INNER JOIN cart on cart.ct_menu_id=menu_item.me_id WHERE cart.user_id=?;";
 		PreparedStatement pstmt=con.prepareStatement(sql1);
 		pstmt.setLong(1, userId);
-		return null;
-		
+		rs=pstmt.executeQuery();
+		rs.next();
+		cart.setTotal(rs.getDouble(1));
+		return cart.getMenuItemList();
 	}
 	
 	public void addCartItem(long userId ,long menuItemId) throws ClassNotFoundException, IOException, SQLException

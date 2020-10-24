@@ -1,16 +1,19 @@
 package com.cognizant.truyum.dao;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import com.cognizant.truyum.model.MenuItem;
 
 public class CartDaoCollectionImplTest 
 {
-	public static void main(String [] args)
+	public static void main(String [] args) throws ClassNotFoundException, IOException, SQLException
 	{
 		testAddCartItem();
 		testRemoveCartItem();
 	}
 	
-	public static void testAddCartItem()
+	public static void testAddCartItem() throws ClassNotFoundException, IOException, SQLException
 	{
 		CartDao cartDao= new CartDaoCollectionImpl();
 		cartDao.addCartItem(1,103);
@@ -26,7 +29,7 @@ public class CartDaoCollectionImplTest
 		}
 		
 	}
-	public static void testGetAllCartItems()
+	public static void testGetAllCartItems() throws ClassNotFoundException, IOException, SQLException
 	{
 		CartDao cartDao= new CartDaoCollectionImpl();
 		try {
@@ -39,7 +42,7 @@ public class CartDaoCollectionImplTest
 			System.out.println("Empty Cart");
 		}
 	}
-	public static void testRemoveCartItem()
+	public static void testRemoveCartItem() throws ClassNotFoundException, IOException, SQLException
 	{
 		CartDao cartDao= new CartDaoCollectionImpl();
 		cartDao.removeCartItem(1,103);

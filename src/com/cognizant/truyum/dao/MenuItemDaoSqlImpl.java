@@ -2,7 +2,6 @@ package com.cognizant.truyum.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,12 +10,12 @@ import java.util.List;
 
 import com.cognizant.truyum.model.MenuItem;
 
-public class MenuItemDaoSqlImpl 
+public class MenuItemDaoSqlImpl implements MenuItemDao
 {
 	public List<MenuItem> getMenuItemListAdmin() throws ClassNotFoundException, IOException, SQLException
 	{
 		List<MenuItem> menuIteml= new ArrayList<>();
-		String sql="SELECT * FROM menu_item";
+		String sql="SELECT * FROM menu_item;";
 		Connection con=ConnectionHandler.getConnection();
 		PreparedStatement ps=con.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
@@ -28,14 +27,15 @@ public class MenuItemDaoSqlImpl
 		return menuIteml;
 		
 	}
-	/*public List<MenuItem> getMenuItemListCustomer() throws ClassNotFoundException, IOException, SQLException
+	@Override
+	public List<MenuItem> getMenuItemListCustomer() throws ClassNotFoundException, IOException, SQLException 
 	{
 		List<MenuItem> menuIteml= new ArrayList<>();
-		String sql="SELECT * FROM menu_item where me_active=true, me_dol=? ";
+		String sql="SELECT * FROM menu_item where me_active=1 and me_dol<=CURDATE(); ";
 		Connection con=ConnectionHandler.getConnection();
 		PreparedStatement ps=con.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
-		//ps.setDate(5, rs.g, cal);  //doubt
+		//ps.setDate(5, rs.g, cal);  //wrong
 		
 		while (rs.next()) 
 		{ 
@@ -44,11 +44,12 @@ public class MenuItemDaoSqlImpl
 		}
 		return menuIteml;
 		
-	}*/
+	}
+	
 	
 	public MenuItem getMenuItem(long menuItemId) throws ClassNotFoundException, IOException, SQLException
 	{
-		String sql="SELECT * FROM menu_item where me_id=? ";
+		String sql="SELECT * FROM menu_item where me_id=?; ";
 		Connection con=ConnectionHandler.getConnection();
 		PreparedStatement ps=con.prepareStatement(sql);
 		ps.setLong(1, menuItemId);
@@ -60,13 +61,20 @@ public class MenuItemDaoSqlImpl
 	}
 	public void editMenuItem(MenuItem menuItem) throws ClassNotFoundException, IOException, SQLException
 	{
-		String sql="UPDATE menu_item SET me_name=?,me_price=?,me_active=?,me_dol=? where me_id="+menuItem.getId()+"";
+		String sql="UPDATE menu_item SET me_name=?,me_price=?,me_active=?,me_dol=? where me_id=?;";
 		Connection con=ConnectionHandler.getConnection();
 		PreparedStatement ps=con.prepareStatement(sql);
-		ps.setString(2, menuItem.getName());
-		ps.setFloat(3, menuItem.getPrice());
-		ps.setBoolean(4, menuItem.isActive());
-		ps.setDate(5, (Date) menuItem.getDateOfLaunch());
+		ps.setString(1, menuItem.getName());
+		ps.setFloat(2, menuItem.getPrice());
+		ps.setBoolean(3, menuItem.isActive());
+		ps.setDate(4, new java.sql.Date(menuItem.getDateOfLaunch().getTime()));
+		ps.setLong(5, menuItem.getId());
 		ps.executeQuery();
 	}
+	@Override
+	public void modifyMenuItem(MenuItem menuItem) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

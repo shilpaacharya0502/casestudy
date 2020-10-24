@@ -1,5 +1,7 @@
 package com.cognizant.truyum.dao;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 
 import com.cognizant.truyum.model.MenuItem;
@@ -7,7 +9,7 @@ import com.cognizant.truyum.util.DateUtil;
 
 public class MenuItemDaoCollectionImplTest 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException 
 	{
 		System.out.println("Menu item list for Admin");
 		testGetMenuItemListAdmin();
@@ -17,7 +19,7 @@ public class MenuItemDaoCollectionImplTest
 		
 	}
 
-	public static void testGetMenuItemListAdmin() 
+	public static void testGetMenuItemListAdmin() throws ClassNotFoundException, IOException, SQLException 
 	{
 		MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
 		// menuItemDao.getMenuItemListAdmin();
@@ -27,7 +29,7 @@ public class MenuItemDaoCollectionImplTest
 		}
 	}
 
-	public static void testGetMenuItemListCustomer() 
+	public static void testGetMenuItemListCustomer() throws ClassNotFoundException, IOException, SQLException 
 	{
 		MenuItemDao menuItemDao= new MenuItemDaoCollectionImpl();
 		
@@ -37,7 +39,7 @@ public class MenuItemDaoCollectionImplTest
 		}
 	}
 	
-	public static void testModifyMenuItem()
+	public static void testModifyMenuItem() throws ClassNotFoundException, IOException, SQLException
 	{
 		try {
 			MenuItem mAdd=new MenuItem(102,"Noodles",49,true,DateUtil.convertToDate("23/10/2020"),"Main Course",false);
