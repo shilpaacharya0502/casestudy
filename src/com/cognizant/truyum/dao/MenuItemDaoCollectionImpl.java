@@ -2,18 +2,17 @@ package com.cognizant.truyum.dao;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import com.cognizant.truyum.model.MenuItem;
 import com.cognizant.truyum.util.DateUtil;
 
-public class MenuItemDaoCollectionImpl implements MenuItemDao {
+public class MenuItemDaoCollectionImpl implements MenuItemDao 
+{
 	private static List<MenuItem> menuItemList;
-	
-
-	public List<MenuItem> getMenuItemListAdmin() {
+	public List<MenuItem> getMenuItemListAdmin() 
+	{
 		return menuItemList;
 	}
 
@@ -28,7 +27,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 				menuItemList.add(new MenuItem(2,"Burger",129,true,DateUtil.convertToDate("23/12/2017"),"Main Course",false));
 				menuItemList.add(new MenuItem(3,"Pizza",149,true,DateUtil.convertToDate("21/08/2018"),"Main Course",false));
 				menuItemList.add(new MenuItem(4,"French fries",57,false,DateUtil.convertToDate("02/07/2017"),"Starters",true));
-				menuItemList.add(new MenuItem(5,"Chocolat Brownie",32,true,DateUtil.convertToDate("02/11/2022"),"Dessert",true));
+				menuItemList.add(new MenuItem(5,"Chocolate Brownie",32,true,DateUtil.convertToDate("02/11/2022"),"Dessert",true));
 			}
 		}catch (ParseException e) 
 			{
@@ -56,10 +55,10 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 				}
 			}
 		}
-
 		return menuItemListC;
 	}
 
+	
 	public void modifyMenuItem(MenuItem menuItem) {
 		for (MenuItem m : menuItemList) {
 			if (m.getId() == menuItem.getId()) {

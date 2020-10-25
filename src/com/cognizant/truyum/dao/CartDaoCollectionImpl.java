@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import com.cognizant.truyum.model.Cart;
@@ -12,7 +11,7 @@ import com.cognizant.truyum.model.MenuItem;
 
 public class CartDaoCollectionImpl implements CartDao
 {
-	private static HashMap<Long, Cart> userCarts;
+	private static HashMap<Long, Cart> userCarts=null;
 	 
 	public CartDaoCollectionImpl()
 	{
@@ -22,7 +21,6 @@ public class CartDaoCollectionImpl implements CartDao
 			userCarts= new HashMap<Long, Cart>();
 		}
 	}
-	
 	public void addCartItem(long userId,long menuItemId) throws ClassNotFoundException, IOException, SQLException
 	{
 		List<MenuItem> menuItemList;
@@ -32,16 +30,14 @@ public class CartDaoCollectionImpl implements CartDao
 		{
 			Cart cart =userCarts.get(userId);
 			menuItemList=cart.getMenuItemList();
-			menuItemList.add(menuItem);
-			cart.setMenuItemList(menuItemList);
-			cart.setTotal(cart.getTotal()+menuItem.getPrice());
-			userCarts.put(userId, cart);
+			menuItemList.add(menuItem);	
 		}
 		else
 		{
 			menuItemList=new ArrayList<MenuItem>();
 			menuItemList.add(menuItem);
-			userCarts.put(userId, (Cart) menuItemList);
+			userCarts.put(userId, new Cart(menuItemList,0));
+			System.out.println("Item added");
 		}
 	} 
 	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException
@@ -63,14 +59,16 @@ public class CartDaoCollectionImpl implements CartDao
 		}
 		return menuItemList;	
 	}
-	
 	public  void removeCartItem(long userId,long menuItemId )
 	{
 		List<MenuItem> list=userCarts.get(userId).getMenuItemList();
-		Iterator<MenuItem> itr = list.iterator();
-		while(itr.hasNext())
+		for(MenuItem m:list)
 		{
-			itr.remove();
+			if(m.getId()==menuItemId)
+			{
+				list.remove(m);
+				break;
+			}
 		}
 	}
 }

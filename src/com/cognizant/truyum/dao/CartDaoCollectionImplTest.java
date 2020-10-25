@@ -16,7 +16,8 @@ public class CartDaoCollectionImplTest
 	public static void testAddCartItem() throws ClassNotFoundException, IOException, SQLException
 	{
 		CartDao cartDao= new CartDaoCollectionImpl();
-		cartDao.addCartItem(1,103);
+		cartDao.addCartItem(1,3);
+		cartDao.addCartItem(1,5);
 		try {
 			for(MenuItem m:cartDao.getAllCartItems(1))
 			{
@@ -45,9 +46,10 @@ public class CartDaoCollectionImplTest
 	public static void testRemoveCartItem() throws ClassNotFoundException, IOException, SQLException
 	{
 		CartDao cartDao= new CartDaoCollectionImpl();
-		cartDao.removeCartItem(1,103);
+		cartDao.removeCartItem(1,3);
 		try {
-			cartDao.getAllCartItems(1);
+			
+			System.out.println("Item removed successfully\n"+cartDao.getAllCartItems(1));
 		} catch (CartEmptyException e) 
 		{
 			System.out.println("Empty Cart");

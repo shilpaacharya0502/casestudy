@@ -16,13 +16,14 @@ public class MenuItemDaoCollectionImplTest
 		System.out.println("Menu item list for Customer");
 		testGetMenuItemListCustomer();
 		testModifyMenuItem();
+		//testGetMenuItem();
 		
 	}
 
 	public static void testGetMenuItemListAdmin() throws ClassNotFoundException, IOException, SQLException 
 	{
 		MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
-		// menuItemDao.getMenuItemListAdmin();
+		
 		for (MenuItem m : menuItemDao.getMenuItemListAdmin()) 
 		{
 			System.out.print(m.toString());
@@ -42,16 +43,21 @@ public class MenuItemDaoCollectionImplTest
 	public static void testModifyMenuItem() throws ClassNotFoundException, IOException, SQLException
 	{
 		try {
-			MenuItem mAdd=new MenuItem(102,"Noodles",49,true,DateUtil.convertToDate("23/10/2020"),"Main Course",false);
+			MenuItem mAdd=new MenuItem(2,"Noodles",49,true,DateUtil.convertToDate("23/10/2020"),"Main Course",false);
 			MenuItemDao menuItemDao= new MenuItemDaoCollectionImpl();
 			menuItemDao.modifyMenuItem(mAdd);
-			System.out.println("After Modification "+menuItemDao.getMenuItem(102));
+			System.out.println("After Modification \n"+menuItemDao.getMenuItem(2));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
-	public static void testGetMenuItem()
+	public static void testGetMenuItem() throws ClassNotFoundException, IOException, SQLException
 	{
-		
+		MenuItemDao menuItemDao= new MenuItemDaoCollectionImpl();
+		//admin menu list is displayed
+		for (MenuItem m : menuItemDao.getMenuItemListAdmin()) 
+		{
+			System.out.print(m.toString());
+		}
 	}
 }

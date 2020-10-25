@@ -12,13 +12,15 @@ public class CartDaoSqlImplTest
 		testAddCartItem();
 		testGetAllCartItems();
 		testRemoveCartItem();
-		testGetAllCartItems();
+		
 		
 	}
 	public static void testAddCartItem() throws ClassNotFoundException, IOException, SQLException, CartEmptyException
 	{
 		CartDaoSqlImpl cartDao=new CartDaoSqlImpl();
-		cartDao.addCartItem(1, 2);
+		cartDao.addCartItem(1,2);
+		//cartDao.addCartItem(1,5);
+		System.out.println("Add CartItem Test");
 		for(MenuItem m:cartDao.getAllCartItems(1))
 		{
 			System.out.println(m.toString());
@@ -27,6 +29,7 @@ public class CartDaoSqlImplTest
 	public static void testGetAllCartItems() throws ClassNotFoundException, CartEmptyException, IOException, SQLException
 	{
 		CartDaoSqlImpl cartDao=new CartDaoSqlImpl();
+		System.out.println("All CartItem Test");
 		for(MenuItem m:cartDao.getAllCartItems(1))
 		{
 			System.out.println(m.toString());
@@ -36,6 +39,7 @@ public class CartDaoSqlImplTest
 	{
 		CartDaoSqlImpl cartDao=new CartDaoSqlImpl();
 		cartDao.removeCartItem(1, 2);
+		System.out.println("After Removing");
 		for(MenuItem m:cartDao.getAllCartItems(1))
 		{
 			System.out.println(m.toString());
