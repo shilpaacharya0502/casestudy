@@ -59,7 +59,8 @@ public class MenuItemDaoSqlImpl implements MenuItemDao
 		return m;
 		
 	}
-	public void editMenuItem(MenuItem menuItem) throws ClassNotFoundException, IOException, SQLException
+	@Override
+	public void modifyMenuItem(MenuItem menuItem) throws ClassNotFoundException, IOException, SQLException 
 	{
 		String sql="UPDATE menu_item SET me_name=?,me_price=?,me_active=?,me_dol=? where me_id=?;";
 		Connection con=ConnectionHandler.getConnection();
@@ -70,10 +71,6 @@ public class MenuItemDaoSqlImpl implements MenuItemDao
 		ps.setDate(4, new java.sql.Date(menuItem.getDateOfLaunch().getTime()));
 		ps.setLong(5, menuItem.getId());
 		ps.executeQuery();
-	}
-	@Override
-	public void modifyMenuItem(MenuItem menuItem) {
-		// TODO Auto-generated method stub
 		
 	}
 

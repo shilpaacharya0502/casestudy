@@ -10,6 +10,6 @@ public interface MenuItemDao
 {
 	public List<MenuItem> getMenuItemListAdmin() throws ClassNotFoundException, IOException, SQLException;
 	public List<MenuItem> getMenuItemListCustomer() throws ClassNotFoundException, IOException, SQLException;
-	public void modifyMenuItem(MenuItem menuItem);
+	public void modifyMenuItem(MenuItem menuItem) throws ClassNotFoundException, IOException, SQLException;
 	public MenuItem getMenuItem(long menuItemId) throws ClassNotFoundException, IOException, SQLException;
 }
